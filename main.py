@@ -78,10 +78,10 @@ def parse_row(row):
 
 def main():
     print('Скачиваю страницу:',url)
-    r = requests.get(url, verify=False)  # отправляем HTTP запрос и получаем результат
+    r = requests.get(url, verify=False)  # получаем страницу
     print('Ищу таблицу')
-    soup = BeautifulSoup(r.text, features='html.parser')  # Отправляем полученную страницу в библиотеку для парсинга
-    rows = soup.find_all('tr', {'class': None})  # Получаем все таблицы с вопросами
+    soup = BeautifulSoup(r.text, features='html.parser')  # парсим таблицу
+    rows = soup.find_all('tr', {'class': None})  # получаем строки
     print('Начинаю парсить таблицу')
     result = []
     for row in rows:
